@@ -1,15 +1,16 @@
 #pragma once
+
 namespace gdc {
     namespace param {
         struct character {
             int hp;
             int attack;
             int em;
-            bool sngw;
+            bool shimenawa;
 
-            double skill_mul;
-            double critical_mul;
-            double elemental_damage_mul;
+            double skill_multiplier;
+            double critical_multiplier;
+            double elemental_damage_multiplier;
         };
     }
 }
