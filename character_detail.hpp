@@ -4,14 +4,16 @@
 namespace gdc {
     struct ElementalMastery {
         constexpr auto bonus_multiplier() const {
+            return (278.0 * em) / (em + 1400);
+        }
+        constexpr auto bonus_multiplier(auto value) const {
             return (278.0 * value) / (value + 1400);
         }
-
         constexpr auto compare(auto value) const {
-            return (1 + bonus_multiplier(value) / 100) / (1 + bonus_multiplier(value) / 100);
+            return (1 + bonus_multiplier(value) / 100) / (1 + bonus_multiplier() / 100);
         }
 
-        int value;
+        int em;
     };
 
     constexpr auto level_multiplier = [](auto u, auto monster) {
@@ -20,7 +22,7 @@ namespace gdc {
 
     class Character {
     public:
-        constexpr Character(param::character param)
+        explicit constexpr Character(param::character param)
             :param_(param) {
 
         }
